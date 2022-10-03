@@ -1,6 +1,12 @@
 <!DOCTYPE html>
 <html>
 <body>
-<p>Someone told me to make a blog.</p>
+Sunday September 18 to Saturday October 1<br>
+Meetings: 5 hours<br>
+Adding features: 7 hours<br>
+Testing and debugging: 1 hour<br>
+<br>
+<p>I was unfortunately not able to do as much as I wanted in the past two weeks, because I did a project and a surprisingly difficult homework assignment for a class. I was a programmer in the narrative and encounter squad, so most of my studio work was implementing dialog boxes. Before I started working, someone else (most likely Nikhil) already created a narrative scene, a dialog box, and a NarrativeDisplay script with many of the features we wanted. In the first week, I attached that dialog box to the main UI prefab and tried to get it to work properly in the combat scene. I got it to display text and pause the game. When the player clicks a continue button, the dialog box hides itself and unpauses the game.</p>
+<p>The dialog box and cutscenes both used the NarrativeDisplay script, NarrativeDisplay paused the game whenever it was active, and there was a cutscene that used time to animate itself, so the game softlocked whenever it tried to play the cutscene. In the second week, I fixed this bug by adding a separate cutscene state in the game manager, and unpausing the game whenever it was in the new cutscene state. My biggest new feature was allowing a scene to display multiple lines of dialog. Each scene's dialog is stored in an instance of CombatEncounterSO. NarrativeDisplay can read dialog from any CombatEncounterSO instance, and it displays the next line when the player clicks on the dialog box. The fight starts when the player clicks the box and it's displaying the last line. Additionally, I attended two of the narrative writing calls. Listening to other people's ideas was interesting, but I did not contribute very much.</p>
 </body>
 </html>
