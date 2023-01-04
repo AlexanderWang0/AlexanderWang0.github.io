@@ -1,2 +1,2 @@
 # AlexanderWang0.github.io
-Someone told me to make a blog.
+This repository is a blog/journal, which you can read here: https://alexanderwang0.github.io/
