@@ -1,57 +1,7 @@
 <!DOCTYPE html>
 <html>
 <body>
-Sunday September 18 to Saturday October 1<br>
-<img src="https://raw.githubusercontent.com/AlexanderWang0/AlexanderWang0.github.io/main/box.png"><br>
-A dialog box displaying an empty name and "..."<br>
-<br>
-Meetings: 5 hours<br>
-Adding features: 7 hours<br>
-Debugging: 1 hour<br>
-<p>I was unfortunately not able to do as much as I wanted in the past two weeks, because I did a project and a surprisingly difficult homework assignment for a class. I was a programmer in the narrative and encounter squad, so most of my studio work was implementing dialog boxes. Before I started working, someone else (most likely Nikhil) already created a narrative scene, a dialog box, and a NarrativeDisplay script with many of the features we wanted. In the first week, I attached that dialog box to the main UI prefab and tried to get it to work properly in the combat scene. I got it to display text and pause the game. When the player clicks a continue button, the dialog box hides itself and unpauses the game.</p>
-<p>The dialog box and cutscenes both used the NarrativeDisplay script, NarrativeDisplay paused the game whenever it was active, and there was a cutscene that used time to animate itself, so the game softlocked whenever it tried to play the cutscene. In the second week, I fixed this bug by adding a separate cutscene state in the game manager, and unpausing the game whenever it was in the new cutscene state. My biggest new feature was allowing a scene to display multiple lines of dialog. Each scene's dialog is stored in an instance of CombatEncounterSO. NarrativeDisplay can read dialog from any CombatEncounterSO instance, and it displays the next line when the player clicks on the dialog box. The fight starts when the player clicks the box and it's displaying the last line. Additionally, I attended two of the narrative writing calls. Listening to other people's ideas was interesting, but I did not contribute very much.</p>
-<br>
-Sunday October 2 to Saturday October 15<br>
-<img src="https://raw.githubusercontent.com/AlexanderWang0/AlexanderWang0.github.io/main/final.png"><br>
-A screenshot featuring the final boss and a dialog arrow<br>
-<br>
-Meetings: 4 hours<br>
-Adding features: 10 hours<br>
-Debugging: 3 hours<br>
-<p>Near the beginning of the week, I tested the game and reported at least 6 bugs. I spent the bugfixing week implementing an animated arrow for the dialog boxes, because I already fixed all the reported dialog-related bugs in the previous week. The arrow took surprisingly long because I was unfamiliar with the Unity animator, and most of the tutorials were focused on sprites while I wanted to animate an UI image. I also went to both work sessions and spent roughly 2 hours helping another programmer change projectile mechanics. The projectile code I wrote over the summer was very messy and difficult to read.</p>
-<p>In the second week, all my tasks were related to adding new enemy submarine encounters into the game. This mostly involved making copies of the already-existing prefab, making copies of the rooms in the submarine, changing the positions and systems in the rooms, and spawning crew members in the rooms. This went a lot more smoothly than I expected, but I did run into a few problems. First, the designers told me to use weapons that aren't in the game yet, so I left those rooms empty for now. There was also an issue where the GameManager instantiated both the default enemy submarine and my new submarine in every scene. I don't know exactly how the room ScriptableObjects work, so it's possible that hitting one room on the enemy will damage systems or crew members in rooms with the same system as the room that was hit. I have not properly tested this.</p>
-<br>
-Sunday October 16 to Saturday October 29<br>
-Meetings: 2 hours<br>
-Adding features: 5 hours<br>
-Debugging: 9 hours<br>
-<p>I had a midterm and a difficult homework assignment on the first week, and there was no studio meeting, so I was able to work on studio stuff for only 5 hours. Nikhil didn't want me working on any narrative-related or enemy-related stuff, and instead he told me to implement 2 ship upgrades that recharge shields faster and "prevent hazards better". I spent a few hours rewriting the upgrade code to be cleaner and make better use of subclasses and inheritance. Then I made a subclass and a ScriptableObject for each of the 2 upgrades.</p>
-<p>The second week was stability week, so the squad did playtests during the Sunday meeting. My squad found at least 15 bugs, and I reported them on the next day. I got into a minor argument with Nikhil because I wanted to fix all the bugs caused by my code, and he already assigned a few of those to other programmers. I was still able to assign some menu-related and projectile-related bugs (including the one that makes projectiles look like guns) to myself. People reported several missing buttons in the options menu in the ship building scene, and it turns out that most of them were simply deleted for some unknown reason. I re-added the buttons and created an Options HUD prefab to synchronize the menus in the different scenes. Justin (a designer) and I found a few enemy-related bugs after I made my first pull request of the week. I made a second pull request to fix those bugs and help Justin balance crew health because he didn't want to touch that during a stability week. I ran out of bugs assigned to me, so I spent the last few hours of the sprint playtesting the game and reporting roughly a dozen more bugs.</p>
-<br>
-Sunday October 30 to Saturday November 12<br>
-<img src="https://raw.githubusercontent.com/AlexanderWang0/AlexanderWang0.github.io/main/branch.png"><br>
-A dialog panel containing placeholder text and buttons that allow the player to choose branches<br>
-<br>
-Meetings: 5 hours<br>
-Adding features: 11 hours<br>
-Watching playtests: 2 hours<br>
-<p>My main task for both weeks was allowing dialog branches in both cutscenes and the combat scene. After considering a few other options, I decided to make each dialog branch an instance of a ScriptableObject, and have them refer to other instances when they need to branch. I made another script and a prefab to handle the buttons in the dialog panel, and spent a few hours making sure the branching logic work properly and the dialog panels display the correct things regardless of whether there's a branch. After finishing this on Saturday, I had a little bit of time left, so I started updating the enemy submarines as the designers told me to.</p>
-<p>On the second week, I spent a few hours talking to the other narrative people about the new dialog system and helping them put the last finishing touches on the story. Then I finished updating the enemy submarines, and spent the rest of the time putting dialog branches in cutscenes. The cutscenes use several components and child objects that the combat scene doesn't use, so I created a prefab and another ScriptableObject script to handle cutscene dialog. Additionally, the cutscenes use coroutines instead of a button component that just displays the next line when clicked, so I had to write a lot of different code to implement the correct logic in the cutscenes. This process took longer and created more bugs.</p>
-<br>
-Sunday November 13 to Saturday November 26<br>
-<img src="https://raw.githubusercontent.com/AlexanderWang0/AlexanderWang0.github.io/main/portrait.png"><br>
-A cutscene featuring a background, a portrait, and 3 choices<br>
-<br>
-Meetings: 4 hours<br>
-Adding features: 3 hours<br>
-Debugging: 10 hours<br>
-<p>In these two weeks, the only features I added were backgrounds and dialog portraits, and I spent the rest of the time fixing bugs and cleaning things up. I made a prefab to synchronize dialog panels in every scene that has them. I filled a few gaps in the enemy submarine layouts. Someone else added several different ways to force players to wait before advancing dialog, and we later decided we didn't want that, so I had to make sure all of those features were disabled in all of the cutscenes. I fixed a bug caused by the game starting the same coroutine twice, a bug caused by setting a prefab instance inactive too early, a bug partly caused by the dialog panel being child 0 in the combat scene and child 1 in cutscenes, and a bug partly caused by a main camera not being directly above the scene's center.</p>
-<br>
-Sunday November 27 to Thursday December 8<br>
-Meetings: 3 hours<br>
-Adding features: 4 hours<br>
-Debugging: 6 hours<br>
-Watching playtests: 1 hour<br>
-<p>This was effectively the last week I spent working on the game. The only real features I added were the death scene and a few last-minute background and portrait art implementations. I fixed a lot of bugs and other small issues, like making sure every scene had the correct background(s), making the pause interface show up during the tutorial, fixing typos in dialog, raising the first enemy's health, making sure each enemy weapon has the same variables as the corresponding player weapon, and replacing some placeholder projectile sprites with the final projectile sprites. During the post-mortem meeting, I asked for more Discord work sessions (in addition to the in-person ones) and more community events.</p>
+Wolverinesoft Studio blog: https://alexanderwang0.github.io/wolverinesoftstudio
+EECS 494 portfolio: https://alexanderwang0.github.io/eecs494
 </body>
 </html>
